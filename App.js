@@ -1,21 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import Home from './app/home/Component';
 
 export default class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text> Prophix Remote Control </Text>
-      </View>
-    );
+    return <Home />;
   }
 }
