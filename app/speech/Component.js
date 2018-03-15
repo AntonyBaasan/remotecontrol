@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Home extends Component {
+export default class Speech extends Component {
   constructor() {
     super();
     this.buttonClicked.bind(this);
@@ -24,7 +24,7 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button onPress={this.buttonClicked} title="Home" />
+        <Button onPress={this.buttonClicked} title="Speech" />
       </View>
     );
   }
