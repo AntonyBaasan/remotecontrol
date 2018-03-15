@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
 });
 
 export default class Shell extends Component {
+  static navigationOptions = {
+    title: 'Shell Commands',
+  };
   constructor() {
     super();
     this.buttonClicked.bind(this);

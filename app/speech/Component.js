@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
 });
 
 export default class Speech extends Component {
+  static navigationOptions = {
+    title: 'Speech',
+  };
   constructor() {
     super();
     this.buttonClicked.bind(this);
