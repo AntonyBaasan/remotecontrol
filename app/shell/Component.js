@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableHighlight, Text, TextInput } from 'react-native';
+import { ScrollView, TouchableHighlight, Text, TextInput } from 'react-native';
 import styles from './Styles';
 import SqsService from '../services/SqsService';
 
@@ -9,31 +9,40 @@ export default class ShellScreen extends Component {
   };
   constructor() {
     super();
+    this.loadingString = 'sending ...';
     this.state = {
       from: 'PROPHIX\\abaasandorj',
       to: 'PROPHIX\\abaasandorj',
       command: 'launch adhoc',
-      result: 'hw',
+      result: '',
     };
     this.sendRequest = this.sendRequest.bind(this);
   }
 
   sendRequest() {
-    this.setState({ result: '' });
+    this.setState({ result: this.loadingString });
     SqsService.sendShellRequest({
       from: this.state.from,
       to: this.state.to,
       command: this.state.command,
-    });
-    // .then((response) => {
-    //   console.log(response);
-    //   this.setState({ result: 'got response' });
-    // });
+    }).then(
+      (response) => {
+        console.log(response);
+        this.setState({ result: response });
+      },
+      (error) => {
+        console.log(error);
+        this.setState({ result: error.message });
+      },
+    );
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="never"
+      >
         <Text style={styles.label}>User</Text>
         <TextInput
           style={styles.input}
@@ -60,8 +69,8 @@ export default class ShellScreen extends Component {
         >
           <Text style={styles.buttonLabel}>Send</Text>
         </TouchableHighlight>
-        <Text>{this.state.result}</Text>
-      </View>
+        <Text style={styles.resultText}>{this.state.result}</Text>
+      </ScrollView>
     );
   }
 }

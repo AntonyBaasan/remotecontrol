@@ -22,7 +22,7 @@ export default class HomeScreen extends Component {
           onPress={() => this.props.navigation.navigate('Speech')}
           style={styles.menuButton}
         >
-          <Text style={styles.menuButtonLabel}> Speech</Text>
+          <Text style={styles.menuButtonLabel}>Speech</Text>
         </TouchableHighlight>
         <Text style={styles.versionLabel}>{AppConfig.version}</Text>
       </View>

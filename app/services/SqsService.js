@@ -24,18 +24,22 @@ export default class SqsService {
       Message: null,
       Lambda: null,
     });
-    sqs.sendMessage(
-      {
-        QueueUrl: AWSConfig.sqs.queueUrl,
-        MessageBody: messageBody,
-      },
-      (err, data) => {
-        if (err) {
-          console.log('Error', err);
-        } else {
-          console.log('Success', data);
-        }
-      },
-    );
+    return new Promise((resolve, reject) => {
+      sqs.sendMessage(
+        {
+          QueueUrl: AWSConfig.sqs.queueUrl,
+          MessageBody: messageBody,
+        },
+        (err, data) => {
+          if (err) {
+            console.log('Error', err);
+            reject(new Error('Error'));
+          } else {
+            console.log('Success', data);
+            resolve('Success');
+          }
+        },
+      );
+    });
   }
 }
