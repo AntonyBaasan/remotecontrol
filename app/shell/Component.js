@@ -1,38 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableHighlight, Text, TextInput } from 'react-native';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'stretch',
-    justifyContent: 'flex-start',
-    padding: 10,
-  },
-  label: {
-    fontSize: 20,
-    marginTop: 10,
-  },
-  input: {
-    fontSize: 16,
-    paddingLeft: 5,
-    paddingRight: 5,
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-  },
-  button: {
-    height: 50,
-    backgroundColor: '#D63411',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 20,
-  },
-  buttonLabel: {
-    fontSize: 26,
-    color: '#fff',
-  },
-});
+import { View, TouchableHighlight, Text, TextInput } from 'react-native';
+import styles from './Styles';
+import SqsService from '../services/SqsService';
 
 export default class ShellScreen extends Component {
   static navigationOptions = {
@@ -40,17 +9,24 @@ export default class ShellScreen extends Component {
   };
   constructor() {
     super();
-    this.buttonClicked.bind(this);
     this.state = {
       from: 'PROPHIX\\abaasandorj',
       to: 'PROPHIX\\abaasandorj',
       command: 'launch adhoc',
     };
+    this.sendRequest = this.sendRequest.bind(this);
   }
 
-  buttonClicked() {
+  sendRequest() {
     this.a = 1;
-    console.log('Pressed');
+    console.log('hello world');
+    // console.log(this);
+    console.log(this.state);
+    SqsService.sendShellRequest({
+      from: this.state.from,
+      to: this.state.to,
+      command: this.state.command,
+    });
   }
 
   render() {
@@ -77,12 +53,11 @@ export default class ShellScreen extends Component {
 
         <TouchableHighlight
           /* eslint react/prop-types: 0 */
-          onPress={this.buttonClicked}
+          onPress={this.sendRequest}
           style={styles.button}
         >
-          <Text style={styles.buttonLabel}> Send</Text>
+          <Text style={styles.buttonLabel}>Send</Text>
         </TouchableHighlight>
-
       </View>
     );
   }
