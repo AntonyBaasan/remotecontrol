@@ -25,7 +25,8 @@ export default class ShellScreen extends Component {
       from: this.state.from,
       to: this.state.to,
       command: this.state.command,
-    }).then((r) => {
+    }).then((response) => {
+      console.log(response);
       this.setState({ result: 'got response' });
     });
   }
