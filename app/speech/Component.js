@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Speech extends Component {
+export default class SpeechScreen extends Component {
   static navigationOptions = {
     title: 'Speech',
   };

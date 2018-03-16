@@ -5,23 +5,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
   menuButton: {
-    width: 300,
     height: 90,
-    marginBottom: 15,
-    backgroundColor: '#DDDDDD',
+    margin: 10,
+    backgroundColor: '#D63411',
     alignItems: 'center',
     justifyContent: 'center',
   },
   menuButtonLabel: {
     fontSize: 26,
+    color: '#fff',
   },
 });
 
-export default class Home extends Component {
+export default class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Home',
   };
