@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk/dist/aws-sdk-react-native';
-import AWSConfig from '../config/AWS.config';
+import AWSConfig from '../config/aws.config';
 /**
  * AWS Simple Query Service wrapper
  */

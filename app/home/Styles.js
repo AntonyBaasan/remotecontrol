@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
     fontSize: 26,
     color: '#fff',
   },
+  versionLabel: {
+    textAlign: 'center',
+  },
 });
 
 export default styles;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 import styles from './Styles';
+import AppConfig from '../config/app.config';
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
@@ -23,6 +24,7 @@ export default class HomeScreen extends Component {
         >
           <Text style={styles.menuButtonLabel}> Speech</Text>
         </TouchableHighlight>
+        <Text style={styles.versionLabel}>{AppConfig.version}</Text>
       </View>
     );
   }
