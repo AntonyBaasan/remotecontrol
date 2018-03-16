@@ -13,19 +13,20 @@ export default class ShellScreen extends Component {
       from: 'PROPHIX\\abaasandorj',
       to: 'PROPHIX\\abaasandorj',
       command: 'launch adhoc',
+      result: 'hw',
     };
     this.sendRequest = this.sendRequest.bind(this);
   }
 
   sendRequest() {
-    this.a = 1;
-    console.log('hello world');
-    // console.log(this);
     console.log(this.state);
+    this.setState({ result: '' });
     SqsService.sendShellRequest({
       from: this.state.from,
       to: this.state.to,
       command: this.state.command,
+    }).then((r) => {
+      this.setState({ result: 'got response' });
     });
   }
 
@@ -35,19 +36,19 @@ export default class ShellScreen extends Component {
         <Text style={styles.label}>User</Text>
         <TextInput
           style={styles.input}
-          onChangeText={text => this.setState({ from: text })}
+          onChangeText={(text) => this.setState({ from: text })}
           value={this.state.from}
         />
         <Text style={styles.label}>Target</Text>
         <TextInput
           style={styles.input}
-          onChangeText={text => this.setState({ to: text })}
+          onChangeText={(text) => this.setState({ to: text })}
           value={this.state.to}
         />
         <Text style={styles.label}>Command</Text>
         <TextInput
           style={styles.input}
-          onChangeText={text => this.setState({ command: text })}
+          onChangeText={(text) => this.setState({ command: text })}
           value={this.state.command}
         />
 
@@ -58,6 +59,7 @@ export default class ShellScreen extends Component {
         >
           <Text style={styles.buttonLabel}>Send</Text>
         </TouchableHighlight>
+        <Text>{this.state.result}</Text>
       </View>
     );
   }
