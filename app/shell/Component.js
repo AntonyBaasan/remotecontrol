@@ -19,16 +19,16 @@ export default class ShellScreen extends Component {
   }
 
   sendRequest() {
-    console.log(this.state);
     this.setState({ result: '' });
     SqsService.sendShellRequest({
       from: this.state.from,
       to: this.state.to,
       command: this.state.command,
-    }).then((response) => {
-      console.log(response);
-      this.setState({ result: 'got response' });
     });
+    // .then((response) => {
+    //   console.log(response);
+    //   this.setState({ result: 'got response' });
+    // });
   }
 
   render() {
