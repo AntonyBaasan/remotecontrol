@@ -11,8 +11,8 @@ export default class ShellScreen extends Component {
     super();
     this.loadingString = 'sending ...';
     this.state = {
-      from: 'PROPHIX\\abaasandorj',
-      to: 'PROPHIX\\abaasandorj',
+      from: 'PROPHIX\\',
+      to: 'PROPHIX\\',
       command: 'launch adhoc',
       result: '',
     };

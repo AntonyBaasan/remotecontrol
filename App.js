@@ -14,8 +14,9 @@ const HomeNavigator = StackNavigator(
     initialRouteName: 'Home',
     headerStyle: {
       backgroundColor: '#f4511e',
+      // backgroundColor: '#D63411',
     },
-    headerTintColor: '#fff',
+    headerTintColor: '#D63411',
     headerTitleStyle: {
       fontWeight: 'bold',
     },
